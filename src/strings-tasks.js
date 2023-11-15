@@ -19,14 +19,17 @@
  *   getStringLength(null) => 0
  *   getStringLength(undefined) => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  if (typeof value === 'string') {
+    return value.length;
+  }
+  return 0;
 }
 
 /**
  * Returns true if the value is a string, otherwise returns false.
  *
- * @param {string} value - The value to check if it's a string.
+ * @param {string} null - The value to check if it's a string.
  * @return {boolean} - True if the value is a string, false otherwise.
  *
  * @example
