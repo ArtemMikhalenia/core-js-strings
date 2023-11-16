@@ -248,8 +248,20 @@ function endsWith(str, substr) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
+function formatTime(minutes, seconds) {
+  let minute = '';
+  let second = '';
+  if (minutes < 10) {
+    minute = minutes.toString().padStart(2, '0');
+  } else {
+    minute = minutes;
+  }
+  if (seconds < 10) {
+    second = seconds.toString().padStart(2, '0');
+  } else {
+    second = seconds;
+  }
+  return `${minute}:${second}`;
 }
 
 /**
