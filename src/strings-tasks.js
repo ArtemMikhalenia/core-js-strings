@@ -494,7 +494,7 @@ function extractEmails(str) {
 
 /**
  * Encode specified string with ROT13 cipher
- * See details:  https://en.wikipedia.org/wiki/ROT13
+ * See details:  https://engit .wikipedia.org/wiki/ROT13
  *
  * @param {string} str - The input string.
  * @return {string} - The ROT13 encoded string.
@@ -508,8 +508,83 @@ function extractEmails(str) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const result = [];
+  const lettersArr = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z',
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z',
+  ];
+  const rot13 = 13;
+
+  for (let i = 0; i < str.length; i += 1) {
+    const code = str.toLowerCase().charCodeAt(i) + rot13;
+    if (lettersArr.includes(str[i])) {
+      if (str[i] === str[i].toUpperCase()) {
+        if (code >= 97 && code <= 122) {
+          result.push(String.fromCharCode(code).toUpperCase());
+        } else {
+          result.push(String.fromCharCode(code - 26).toUpperCase());
+        }
+      } else if (code >= 97 && code <= 122) {
+        result.push(String.fromCharCode(code));
+      } else {
+        result.push(String.fromCharCode(code - 26));
+      }
+    } else {
+      result.push(str[i]);
+    }
+  }
+  return result.join('');
 }
 
 /**
